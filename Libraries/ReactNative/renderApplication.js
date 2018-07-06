@@ -26,7 +26,12 @@ function renderApplication<Props: Object>(
   rootTag: any,
   WrapperComponent?: ?React.ComponentType<*>,
 ) {
-  invariant(rootTag, 'Expect to have a valid rootTag, instead got ', rootTag);
+
+  // invariant(rootTag, 'Expect to have a valid rootTag, instead got ', rootTag);
+
+  // TODO: Find out why MDX Toolkit is causing there to be a hidden view without a rootTag.
+  // Give it a rootTag of 0 for now, unlikely to be used somewhere else
+  rootTag = rootTag || 0;
 
   let renderable = (
     <AppContainer rootTag={rootTag} WrapperComponent={WrapperComponent}>
